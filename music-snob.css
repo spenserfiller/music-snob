@@ -1,4 +1,7 @@
 /* Space out content a bit */
+.col-md-8 {
+  height: 60px;
+}
 body {
   padding-top: 20px;
   padding-bottom: 20px;
