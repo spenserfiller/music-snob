@@ -9,22 +9,20 @@ if (Meteor.isClient) {
   });
   
 
-    "submit form.search": function (event){
-      event.preventDefault();
+  Template.search.events({
+    "submit form.searches": function (event){
       var form = event.target
       console.log(form.query.value)
       return false
-    }
-    
-    
-    
-
+    }  
+  });
   
   Router.map( function (){
   this.route('home', {
     path: '/'
   });
 })
+
 Router.map( function () {
   this.route('playlistRoute');
 });
@@ -37,7 +35,7 @@ Router.map( function () {
 Router.map( function () {
   this.route('bannedRoute');
 })
-    
+   
     /*
 "submit .new-song": function (event) {
   // This function is called when the new song form is submitted

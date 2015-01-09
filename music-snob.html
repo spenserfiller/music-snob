@@ -21,7 +21,7 @@
           <div class="nav-bar right">
            <ul class="button-group">
              <li><a href="{{pathFor 'home'}}" class="button">Home</a></li>
-             <li><a href="{{pathFor 'playlistsRoute'}}" class="button">Playlists</a></li>
+             <li><a href="{{pathFor 'playlistRoute'}}" class="button">Playlists</a></li>
              <li><a href="{{pathFor 'songsRoute'}}" class="button">Your songs</a></li>
              <li><a href="{{pathFor 'pendingRoute'}}" class="button">Pending</a></li>
              <li><a href="{{pathFor 'bannedRoute'}}" class="button">Banned List</a></li>
@@ -75,8 +75,8 @@
 <!-- search template -->
 <template name='search'>
   <div class="large-9 columns">
-               <form action=''>
-                 <input type='text' name='search' placeholder='Search for music here!' style="width: 450px;height: 55px;">
+               <form class="searches" action=''>
+                 <input type='text' name='query' placeholder='Search for music here!' style="width: 450px;height: 55px;">
                </form>
              </div>
              <div class="large-2 columns">
