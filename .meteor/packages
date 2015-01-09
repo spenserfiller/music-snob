@@ -10,3 +10,4 @@ accounts-password
 ewall:foundation
 insecure
 autopublish
+iron:router
