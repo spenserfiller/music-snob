@@ -16,6 +16,23 @@ if (Meteor.isClient) {
     
     
   });
+  Router.map( function (){
+  this.route('home', {
+    path: '/'
+  });
+})
+Router.map( function () {
+  this.route('playlistRoute');
+});
+Router.map( function () {
+  this.route('songsRoute');
+})
+Router.map( function () {
+  this.route('pendingRoute');
+})
+Router.map( function () {
+  this.route('bannedRoute');
+})
     
     /*
 "submit .new-song": function (event) {
