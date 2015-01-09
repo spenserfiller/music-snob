@@ -8,3 +8,5 @@ meteor-platform
 accounts-ui
 accounts-password
 ewall:foundation
+autopublish
+insecure

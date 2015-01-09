@@ -68,7 +68,7 @@
           <hr/>    
         </div>
      
-         
+
      
      
          
@@ -101,7 +101,9 @@
           </div>
         </div>
       </footer>
-    
+    <ul>{{#each playlists}}
+                {{> playlist}}
+               {{/each}}</ul>
   </body>
 <!-- template -->  
 <template name='spotify-song'>
@@ -116,5 +118,5 @@
                 </div> 
 </template>
 <template name='playlist'>
-    <option>{{playlist}}</option>
+    <li>{{playlist}}</li>
 </template>
