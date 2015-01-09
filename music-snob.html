@@ -14,7 +14,6 @@
   </head>
 
   <body>
-
       <!-- navbar -->
       <div class="row">
         <div class="large-12 columns">
@@ -38,6 +37,7 @@
            <div class="row">
             <!-- search bar -->
              {{> search}}
+
            </div>
             
             <!--song results --> 
@@ -45,13 +45,11 @@
           <hr/>  
            
         </div>
+        <!-- spotify player -->
         <aside class="large-3 columns">
-          <iframe src="https://embed.spotify.com/?uri=spotify:track:41GZiQAvgzSCXLhIWVJfMB" width="200" height="280" frameborder="0" allowtransparency="true"></iframe>
+          <iframe src="https://embed.spotify.com/?uri=spotify:track:41GZiQAvgzSCXLhIWVJfMB" width="200" height="80" frameborder="0" allowtransparency="true"></iframe>
         </aside>         
       </div>         
-     <!-- spotify player -->
-      
-
   </body>
 <!-- template -->  
 <template name='spotifysong'>
@@ -64,7 +62,7 @@
                   <div class='medium-2 columns'>{{album.name}}</div>
                 </div>
                 <div class="medium-2 columns"><a href='#'>Add</a></div>
-                <div class="medium-2 columns"><a href='spotify:track:{{spotify_id}}'>Preview</a></div>
+                <div class="medium-2 columns"><a href='{{uri}}'>Preview</a></div>
                 </div> 
                 {{/each}}
 </template>
