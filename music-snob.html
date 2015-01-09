@@ -15,7 +15,7 @@
 
   <body>
 
-
+      <!-- navbar -->
       <div class="row">
         <div class="large-12 columns">
           <div class="nav-bar right">
@@ -30,24 +30,23 @@
           <hr/>
         </div>
       </div>
-     
+     <!-- search and return -->
       <div class="row">
-         
         <div class="large-9 columns" role="content">
-     
           <article>
            <div class="row">
-            <div class="large-9 columns">
-             <form action=''>
-               <input type='text' name='search' placeholder='Search for music here!' style="width: 450px;height: 55px;">
-             </form>
+            <!-- search bar -->
+             <div class="large-9 columns">
+               <form action=''>
+                 <input type='text' name='search' placeholder='Search for music here!' style="width: 450px;height: 55px;">
+               </form>
+             </div>
+             <div class="large-2 columns">
+               <button type='submit' style="height: 55px;">Search!</button>
+             </div>
            </div>
-           <div class="large-2 columns">
-             <button type='submit' style="height: 55px;">Search!</button>
-           </div>
-           </div>
-           
-            <h3><a href="#">Search Results</a></h3>  
+            <h3><a href="#">Search Results</a></h3> 
+            <!--song results --> 
             <div class="row">
               <div class="large-12 columns">
                 {{for each}}
@@ -56,17 +55,14 @@
               </div>
             </div>    
           </article>
-     
-          <hr/>
-     
-     
+          <hr/>    
         </div>
      
          
      
      
          
-     
+     <!-- spotify player -->
         <aside class="large-3 columns">
           <iframe src="https://embed.spotify.com/?uri=spotify:track:41GZiQAvgzSCXLhIWVJfMB" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
         </aside>         
@@ -92,6 +88,7 @@
       </footer>
     
   </body>
+<!-- template -->  
 <template name='spotify-song'>
                 <div class="medium-12 columns song-result">
                 <div class="medium-8 columns">Song Info</div>
