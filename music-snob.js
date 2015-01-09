@@ -27,7 +27,8 @@ if (Meteor.isClient) {
     }  
   });
   
-  Template.home.spotifysong = function() {
+  Template.spotifysong.recentTracks = function() {
+    console.log("getting tracks!")
     return Session.get("recentTracks") || [];
   }
 
@@ -79,7 +80,7 @@ Router.map( function () {
 if (Meteor.isServer) {
 	Meteor.methods({
 		searchTrack: function(track) {
-			var url = "https://api.spotify.com/v1/search?q=" + track + "*&type=track&limit=10";
+			var url = "https://api.spotify.com/v1/search?q=" + track + "&type=track&limit=10";
 			console.log(url)
 			//synchronous GET
 			var result = Meteor.http.get(url, {timeout:30000});
