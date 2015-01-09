@@ -4,17 +4,21 @@ if (Meteor.isClient) {
   Template.playlistSelect.helpers({
     playlists: function () {
       play = Playlists.find({});
-      console.log('hi');
       return Playlists.find({});
     }
   });
   
   Template.body.events({
-    'submit .search': function (event){
-      console.log('searching')
-      });
+    "click .search": function (event){
+      console.log(params)
+    }
     
-    "submit .new-song": function (event) {
+    
+    
+  });
+    
+    /*
+"submit .new-song": function (event) {
   // This function is called when the new song form is submitted
     var playlistName = event.target.playlistName.value;
     var spotifyId =  
@@ -33,6 +37,7 @@ if (Meteor.isClient) {
     return false;
   }
 });
+*/
 }
 
 
@@ -40,5 +45,11 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
   
+/*
+  Meteor.methods(
+  getSongs = function (searchParams){
+    
+  }
+*/
 }
 
