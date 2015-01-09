@@ -4,7 +4,7 @@ if (Meteor.isClient) {
   Template.playlistSelect.helpers({
     playlists: function () {
       play = Playlists.find({});
-      console.log('hi');
+      console.log(play);
       return Playlists.find({});
     }
   });
