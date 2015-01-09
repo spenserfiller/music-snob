@@ -6,7 +6,7 @@ if (Meteor.isClient) {
       playli = Playlists.find({});
       return Playlists.find({});
     }
-    console.log(playli);
+    
   });
   
 /*
