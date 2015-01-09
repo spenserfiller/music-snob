@@ -1,12 +1,12 @@
 Playlists = new Mongo.Collection('playlists')
 
 if (Meteor.isClient) {
-  Template.playlist.render({
+  Template.playlist.helpers({
     playlists: function () {
-      playli = Playlists.find({});
+      play = Playlists.find({});
+      console.log('hi');
       return Playlists.find({});
     }
-    
   });
   
 /*
