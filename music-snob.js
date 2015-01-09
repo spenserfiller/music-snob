@@ -13,7 +13,14 @@ if (Meteor.isClient) {
     "submit form.searches": function (event){
       var form = event.target
       console.log(form.query.value)
-      return false
+      Meteor.call('searchTrack', form.query.value, function(err, respJson) {
+				if(err) {
+					window.alert("Error: " + err.reason);
+					console.log("error occured on receiving data on server. ", err );
+				} else {
+					console.log("respJson: ", respJson);
+				}
+			});
     }  
   });
   
@@ -62,13 +69,23 @@ Router.map( function () {
 
 
 
-if (Meteor.isServer) {
-  
-/*
-  Meteor.methods(
-  getSongs = function (searchParams){
-    
-  }
-*/
+if (Meteor.is_server) {
+	Meteor.methods({
+		searchTrack: function(track) {
+			var url = "https://api.spotify.com/v1/search?q=" + track + "*&type=track";
+			console.log(url)
+			//synchronous GET
+			var result = Meteor.http.get(url, {timeout:30000});
+			if(result.statusCode==200) {
+				var respJson = JSON.parse(result.content);
+				console.log("response received.");
+				return respJson;
+			} else {
+				console.log("Response issue: ", result.statusCode);
+				var errorJson = JSON.parse(result.content);
+				throw new Meteor.Error(result.statusCode, errorJson.error);
+			}
+		}
+	});
 }
 
