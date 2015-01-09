@@ -9,14 +9,17 @@ if (Meteor.isClient) {
     }
   });
   
-  Template.body.events({
-    "click .search": function (event){
-      console.log(params)
+  Template.home.events({
+    "submit form.search": function (event){
+      var form = event.target
+      console.log(form.query.value)
+      return false
     }
     
     
     
   });
+  
   Router.map( function (){
   this.route('home', {
     path: '/'
