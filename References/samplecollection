@@ -1,6 +1,6 @@
 Playlists
 {
-  id:
+  _id:
   owner_id:
   name:
   spotify_id:
@@ -18,7 +18,7 @@ Playlists
 
 USERS
 {
-  id:
+  _id:
   username:
   password:
   songs: {
