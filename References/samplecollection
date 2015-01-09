@@ -5,14 +5,14 @@ Playlists
   name:
   spotify_id:
   songs: {
+    spotify_id:
     song_id:
     votes:{
       count:
       users:{
         user_id:
        }
-      }
-    spotify_id:
+      }  
     }
 }
 
