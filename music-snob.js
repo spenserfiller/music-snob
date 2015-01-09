@@ -6,7 +6,7 @@ if (Meteor.isClient) {
       return Playlists.find({});
     }
   });
-  Meteor.subscribe("playlists");
+  
 /*
   Template.body.events({
   "submit .new-song": function (event) {
