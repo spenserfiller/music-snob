@@ -9,11 +9,35 @@ if (Meteor.isClient) {
     }
   });
   
-/*
   Template.body.events({
-  "submit .new-song": function (event) {
-    // This function is called when the new song form is submitted
-
+    "click .search": function (event){
+      console.log(params)
+    }
+    
+    
+    
+  });
+  Router.map( function (){
+  this.route('home', {
+    path: '/'
+  });
+})
+Router.map( function () {
+  this.route('playlistRoute');
+});
+Router.map( function () {
+  this.route('songsRoute');
+})
+Router.map( function () {
+  this.route('pendingRoute');
+})
+Router.map( function () {
+  this.route('bannedRoute');
+})
+    
+    /*
+"submit .new-song": function (event) {
+  // This function is called when the new song form is submitted
     var playlistName = event.target.playlistName.value;
     var spotifyId =  
     
@@ -39,5 +63,11 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
   
+/*
+  Meteor.methods(
+  getSongs = function (searchParams){
+    
+  }
+*/
 }
 
