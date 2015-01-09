@@ -20,8 +20,10 @@ if (Meteor.isClient) {
 					console.log("error occured on receiving data on server. ", err );
 				} else {
 					console.log("respJson: ", respJson);
+          return respJson
 				}
 			});
+      return false
     }  
   });
   
@@ -70,7 +72,7 @@ Router.map( function () {
 
 
 
-if (Meteor.is_server) {
+if (Meteor.isServer) {
 	Meteor.methods({
 		searchTrack: function(track) {
 			var url = "https://api.spotify.com/v1/search?q=" + track + "*&type=track";
