@@ -8,37 +8,10 @@
 /* Custom page footer */
 
 /* Customize container */
-@media (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-}
-.container-narrow > hr {
-  margin: 10px 0;
-}
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-right: 0;
-    padding-left: 0;
-    padding-top: 20px;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 0px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
-}
-div .song-result {
+.song-result {
   border: 3px;
   border-radius: 7px;
   border-style: solid;
-  border-color: grey;
+  border-color: black;
 }
