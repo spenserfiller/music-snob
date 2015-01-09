@@ -20,13 +20,17 @@ if (Meteor.isClient) {
 					console.log("error occured on receiving data on server. ", err );
 				} else {
 					console.log("respJson: ", respJson);
-          return respJson
+          Session.set("recentTracks",respJson);
 				}
 			});
       return false
     }  
   });
   
+  Template.home.spotifysong = function() {
+    return Session.get("recentTracks") || [];
+  }
+
   Router.map( function (){
   this.route('home', {
     path: '/'
@@ -75,7 +79,7 @@ Router.map( function () {
 if (Meteor.isServer) {
 	Meteor.methods({
 		searchTrack: function(track) {
-			var url = "https://api.spotify.com/v1/search?q=" + track + "*&type=track";
+			var url = "https://api.spotify.com/v1/search?q=" + track + "*&type=track&limit=10";
 			console.log(url)
 			//synchronous GET
 			var result = Meteor.http.get(url, {timeout:30000});
