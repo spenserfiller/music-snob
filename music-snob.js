@@ -8,8 +8,9 @@ if (Meteor.isClient) {
     }
   });
   
-  Template.home.events({
+
     "submit form.search": function (event){
+      event.preventDefault();
       var form = event.target
       console.log(form.query.value)
       return false
@@ -17,7 +18,7 @@ if (Meteor.isClient) {
     
     
     
-  });
+
   
   Router.map( function (){
   this.route('home', {
