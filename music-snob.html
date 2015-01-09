@@ -75,11 +75,7 @@
      <!-- spotify player -->
         <aside class="large-3 columns">
           <iframe src="https://embed.spotify.com/?uri=spotify:track:41GZiQAvgzSCXLhIWVJfMB" width="200" height="280" frameborder="0" allowtransparency="true"></iframe>
-          <select>
-          {{#each playlist}}
-            {{> playlist}}
-          {{/each}}
-         </select>
+          {{> playlistSelect}}
         </aside>         
       </div>
      
@@ -115,6 +111,11 @@
                 <div class="medium-2 columns"><a href='spotify:track:{{spotify_id}}'>Preview</a></div>
                 </div> 
 </template>
-<template name='playlist'>
-    <option>{{playlist}}</option>
+<template name='playlistSelect'>
+  <select>
+    {{#each playlists}}
+      <option>{{name}}</option>
+    {{/each}}
+  </select>
+
 </template>
