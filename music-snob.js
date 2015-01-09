@@ -9,11 +9,13 @@ if (Meteor.isClient) {
     }
   });
   
-/*
   Template.body.events({
-  "submit .new-song": function (event) {
-    // This function is called when the new song form is submitted
-
+    'submit .search': function (event){
+      console.log('searching')
+      });
+    
+    "submit .new-song": function (event) {
+  // This function is called when the new song form is submitted
     var playlistName = event.target.playlistName.value;
     var spotifyId =  
     
@@ -31,7 +33,6 @@ if (Meteor.isClient) {
     return false;
   }
 });
-*/
 }
 
 
