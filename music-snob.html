@@ -20,6 +20,7 @@
         <div class="large-12 columns">
           <div class="nav-bar right">
            <ul class="button-group">
+             <li><a href="#" class="button">Home</a></li>
              <li><a href="#" class="button">Playlists</a></li>
              <li><a href="#" class="button">Your songs</a></li>
              <li><a href="#" class="button">Pending</a></li>
@@ -74,6 +75,11 @@
      <!-- spotify player -->
         <aside class="large-3 columns">
           <iframe src="https://embed.spotify.com/?uri=spotify:track:41GZiQAvgzSCXLhIWVJfMB" width="200" height="280" frameborder="0" allowtransparency="true"></iframe>
+          <select>
+          {{#each playlist}}
+            {{> playlist}}
+          {{/each}}
+         </select>
         </aside>         
       </div>
      
@@ -108,4 +114,7 @@
                 <div class="medium-2 columns">Add</div>
                 <div class="medium-2 columns">Preview</div>
                 </div> 
+</template>
+<template name='playlist'>
+    <option>{{playlist}}</option>
 </template>
