@@ -34,3 +34,4 @@ USERS
   name: 'MakerSquare sick beats',
   songs: []
 }
+db.playlists.insert({name: "MakerSquare sick beats"})
