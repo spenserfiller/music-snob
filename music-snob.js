@@ -30,8 +30,9 @@ if (Meteor.isClient) {
 
   Template.spotifysong.events({
     "click .add-button": function (event) {
-      var spotify_id = this.id;
-      console.log(spotify_id)
+      var spotifyId = this.id;
+      console.log(spotifyId)
+      Meteor.call("addToPlaylist", this.id, 'placehold');
       return false;
     }
 
@@ -103,7 +104,14 @@ if (Meteor.isServer) {
 				var errorJson = JSON.parse(result.content);
 				throw new Meteor.Error(result.statusCode, errorJson.error);
 			}
-		}
+		},
+
+    addToPlaylist: function(spotifyId, playlist){
+      Playlists.update(
+        { name: "MakerSquare sick beats"},
+        { $push: { songs: spotifyId } }
+      )
+    }
 	});
 }
 
