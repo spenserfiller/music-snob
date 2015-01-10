@@ -169,16 +169,25 @@
           <hr/>    
         </div>
         <div class="large-9 columns">
-          {{#each recentTracks.tracks.items}}
+                  <div class="large-12 columns song-result">
+                    <div class="large-12 columns">
+                      <div class='large-2 columns'>Artist</div>
+                      <div class='large-4 columns'>Track</div>
+                      <div class='large-3 columns'>Album</div>
+                      <div class="large-3 columns">Preview</div>
+                    </div>
+                  </div> 
+                </div>
+        <div class="large-9 columns">
+          {{#each playlistTracks}}
                 <div class="large-12 columns song-result">
                 <div class="large-8 columns">
-                  <div class='large-2 columns'>
+                  <div class='large-3 columns'>
                     {{artists.[0].name}}</div>
-                  <div class='large-2 columns'>{{name}}</div>
-                  <div class='large-4 columns'>{{album.name}}</div>
+                  <div class='large-5 columns'>{{name}}</div>
+                  <div class='large-4 columns'>{{album}}</div>
                 </div>
-                <div class="large-1 columns" name='add'><a href='#' class='add-button'>Add</a></div>
-                <div class="large-3 columns" style='padding: 2px'><iframe src="https://embed.spotify.com/?uri=spotify:track:{{id}}" width="200" height="80" frameborder="0" allowtransparency="true"></iframe></div>
+                <div class="large-4 columns" style='padding: 2px'><iframe src="https://embed.spotify.com/?uri=spotify:track:{{id}}" width="200" height="80" frameborder="0" allowtransparency="true"></iframe></div>
                 </div> 
                 {{/each}}
         </div>
@@ -194,16 +203,25 @@
           <hr/>    
         </div>
         <div class="large-9 columns">
-          {{#each recentTracks.tracks.items}}
+                  <div class="large-12 columns song-result">
+                    <div class="large-12 columns">
+                      <div class='large-2 columns'>Artist</div>
+                      <div class='large-4 columns'>Track</div>
+                      <div class='large-3 columns'>Album</div>
+                      <div class="large-3 columns">Preview</div>
+                    </div>
+                  </div> 
+                </div>
+        <div class="large-9 columns">
+          {{#each playlistTracks}}
                 <div class="large-12 columns song-result">
                 <div class="large-8 columns">
-                  <div class='large-2 columns'>
+                  <div class='large-3 columns'>
                     {{artists.[0].name}}</div>
-                  <div class='large-2 columns'>{{name}}</div>
-                  <div class='large-4 columns'>{{album.name}}</div>
+                  <div class='large-5 columns'>{{name}}</div>
+                  <div class='large-4 columns'>{{album}}</div>
                 </div>
-                <div class="large-1 columns" name='add'><a href='#' class='add-button'>Add</a></div>
-                <div class="large-3 columns" style='padding: 2px'><iframe src="https://embed.spotify.com/?uri=spotify:track:{{id}}" width="200" height="80" frameborder="0" allowtransparency="true"></iframe></div>
+                <div class="large-4 columns" style='padding: 2px'><iframe src="https://embed.spotify.com/?uri=spotify:track:{{id}}" width="200" height="80" frameborder="0" allowtransparency="true"></iframe></div>
                 </div> 
                 {{/each}}
         </div>
@@ -211,7 +229,7 @@
 </template>
 <!-- banned list template -->
 <template name='bannedRoute'>
-  <div class='row'>
+ <div class='row'>
       <div class="small-3 columns" role="content">
           <article>
            {{> playlistSelect}}
@@ -219,16 +237,25 @@
           <hr/>    
         </div>
         <div class="large-9 columns">
-          {{#each recentTracks.tracks.items}}
+                  <div class="large-12 columns song-result">
+                    <div class="large-12 columns">
+                      <div class='large-2 columns'>Artist</div>
+                      <div class='large-4 columns'>Track</div>
+                      <div class='large-3 columns'>Album</div>
+                      <div class="large-3 columns">Preview</div>
+                    </div>
+                  </div> 
+                </div>
+        <div class="large-9 columns">
+          {{#each playlistTracks}}
                 <div class="large-12 columns song-result">
                 <div class="large-8 columns">
-                  <div class='large-2 columns'>
+                  <div class='large-3 columns'>
                     {{artists.[0].name}}</div>
-                  <div class='large-2 columns'>{{name}}</div>
-                  <div class='large-4 columns'>{{album.name}}</div>
+                  <div class='large-5 columns'>{{name}}</div>
+                  <div class='large-4 columns'>{{album}}</div>
                 </div>
-                <div class="large-1 columns" name='add'><a href='#' class='add-button'>Add</a></div>
-                <div class="large-3 columns" style='padding: 2px'><iframe src="https://embed.spotify.com/?uri=spotify:track:{{id}}" width="200" height="80" frameborder="0" allowtransparency="true"></iframe></div>
+                <div class="large-4 columns" style='padding: 2px'><iframe src="https://embed.spotify.com/?uri=spotify:track:{{id}}" width="200" height="80" frameborder="0" allowtransparency="true"></iframe></div>
                 </div> 
                 {{/each}}
         </div>
