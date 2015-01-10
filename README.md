@@ -37,3 +37,4 @@
 -Vote to skip
 -Weight based play order
 -highlight songs already in playlist on search page
+-move spotify player to the top and use click button, look in to linking just the overall URL

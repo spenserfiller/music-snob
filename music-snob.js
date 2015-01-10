@@ -36,11 +36,15 @@ if (Meteor.isClient) {
           Session.set("recentTracks",respJson);
 				}
 			});
-      return false
-    }
+      return false;
+    },
+
+      
     
   });
   //play button function
+
+
 //spotifysong template handler
   Template.spotifysong.events({
     "click .add-button": function (event) {
