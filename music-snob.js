@@ -55,6 +55,15 @@ if (Meteor.isClient) {
     console.log("getting tracks!");
     return Session.get("recentTracks") || [];
   };
+  
+  // playlist tracks
+  Template.playlistRoute.playlistTracks = function () {
+    console.log('getting playlist tracks!');
+    songs = Playlists.find({})
+    console.log('songs: ' + songs);
+    return false
+  }
+  
 //router maps
   Router.map( function (){
   this.route('home', {
