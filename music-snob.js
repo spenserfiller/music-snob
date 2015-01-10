@@ -62,7 +62,6 @@ if (Meteor.isClient) {
   Template.spotifysong.recentTracks = function() {
     console.log("getting tracks!")
     return Session.get("recentTracks") || [];
-<<<<<<< HEAD
   };
   
   // playlist tracks
@@ -72,10 +71,7 @@ if (Meteor.isClient) {
     console.log('songs: ' + songs);
     return false
   }
-  
-=======
-  }
->>>>>>> 9d3e844adb9a40c052f7bf683e59407013584021
+
 //router maps
   Router.map( function (){
   this.route('home', {
