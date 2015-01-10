@@ -1,11 +1,19 @@
-Playlists = new Mongo.Collection('playlists');
+Playlists = new Mongo.Collection('playlists')
 
 if (Meteor.isClient) {
   Template.playlistSelect.helpers({
     playlists: function () {
       return Playlists.find({});
+    },
+    selected: function() {
+      if(this.name === Session.get('selected_playlist')){
+        return 'selected'
+      } else {
+        return ""
+      }
     }
   });
+  
 
   Template.playlistSelect.events({
     'change select.select-option':function (event, template){
@@ -17,8 +25,8 @@ if (Meteor.isClient) {
 //search bar
   Template.search.events({
     "submit form.searches": function (event){
-      var form = event.target;
-      console.log(form.query.value);
+      var form = event.target
+      console.log(form.query.value)
       Meteor.call('searchTrack', form.query.value, function(err, respJson) {
 				if(err) {
 					window.alert("Error: " + err.reason);
@@ -28,39 +36,32 @@ if (Meteor.isClient) {
           Session.set("recentTracks",respJson);
 				}
 			});
-      return false;
+      return false
     }
     
   });
   //play button function
-  Template.spotifyPlayer.events({
-    'click .play-button': function (event){
-      console.log('stuff');
-      return Session.get("recentTracks");
-    }
-  });
-
 //spotifysong template handler
   Template.spotifysong.events({
     "click .add-button": function (event) {
       var spotifyId = this.id;
-      console.log(spotifyId);
+      console.log(spotifyId)
       Meteor.call("addToPlaylist", this.id, 'placehold');
       return false;
     }
 
-  });
+  })
 //recent tracks
   Template.spotifysong.recentTracks = function() {
-    console.log("getting tracks!");
+    console.log("getting tracks!")
     return Session.get("recentTracks") || [];
-  };
+  }
 //router maps
   Router.map( function (){
   this.route('home', {
     path: '/'
   });
-});
+})
 
   Router.map( function () {
     this.route('playlistRoute', {
