@@ -3,13 +3,18 @@ Playlists = new Mongo.Collection('playlists')
 if (Meteor.isClient) {
   Template.playlistSelect.helpers({
     playlists: function () {
-      play = Playlists.find({});
-      console.log(play);
       return Playlists.find({});
     }
   });
-  
 
+  Template.playlistSelect.events({
+    'change select.select-option':function (event, template){
+      Session.set('selected_playlist', template.find('.select-option').value);
+      console.log("value changed")
+    }
+  })
+
+//search bar
   Template.search.events({
     "submit form.searches": function (event){
       var form = event.target
@@ -27,7 +32,8 @@ if (Meteor.isClient) {
     }
     
   });
-
+  //play button function
+//spotifysong template handler
   Template.spotifysong.events({
     "click .add-button": function (event) {
       var spotifyId = this.id;
@@ -37,12 +43,12 @@ if (Meteor.isClient) {
     }
 
   })
-  
+//recent tracks
   Template.spotifysong.recentTracks = function() {
     console.log("getting tracks!")
     return Session.get("recentTracks") || [];
   }
-
+//router maps
   Router.map( function (){
   this.route('home', {
     path: '/'
