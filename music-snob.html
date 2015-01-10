@@ -59,7 +59,7 @@
                   <div class='large-2 columns'>{{name}}</div>
                   <div class='large-4 columns'>{{album.name}}</div>
                 </div>
-                <div class="large-3 columns" name='add'>{{> playlistSelect}}<a href='#' class='add-button'>Add</a></div>
+                <div class="large-3 columns" name='add'>{{> playlistSelect}}<a href='#' class='add-button'>Add to selected playlist</a></div>
                 <div class="large-1 columns" style='padding: 2px'>
                   <img src='images/play.jpg' height='40' width='40'></div>
                 </div> 
@@ -67,7 +67,7 @@
 </template>
 <!-- playlist template -->
 <template name='playlistSelect'>
-  <select>
+  <select class='select-option'>
     {{#each playlists}}
       <option>{{name}}</option>
     {{/each}}
@@ -81,10 +81,10 @@
                  <input type='text' name='query' placeholder='Search for music here!' style="width: 450px;height: 55px;">
                </form>
              </div>
-             <div class="large-5 columns">
+             <div class="large-1 columns">
                <button type='submit' style="height: 55px;">Search!</button>
              </div>
-             <div class="large-1 columns"></div>
+             <div class="large-2 columns"><iframe src="https://embed.spotify.com/?uri=spotify:track:{{id}}" class='spot-player' width="200" height="80" frameborder="0" allowtransparency="true"></iframe></div>
   </template>
 <!-- home -->
 <template name='home'>

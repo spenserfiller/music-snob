@@ -14,6 +14,8 @@
   border-radius: 7px;
   border-style: solid;
   border-color: black;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
 }
 .button-group {
   padding-top: 9px;
@@ -23,4 +25,17 @@ h3 {
 }
 .searchbar {
   border-color: black;
+}
+.add-button {
+	font-size: 12px;
+	padding-top: 0;
+	border-top: 0;
+}
+.select-option {
+	height: 30px;
+	font-size: 12px;
+	margin: 0 0 0 0;
+}
+.spot-player {
+	float: none;
 }
