@@ -55,7 +55,7 @@ Router.map( function () {
   });
 });
 Router.map( function () {
-  this.route('songsRoute' {
+  this.route('songsRoute', {
     path: 'yoursongs'
   });
 })
