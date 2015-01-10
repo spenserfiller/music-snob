@@ -30,7 +30,7 @@ if (Meteor.isClient) {
 
   Template.spotifysong.events({
     "click .add-button": function (event) {
-      var spotify_id = event.target.spotify_id
+      var spotify_id = this.id;
       console.log(spotify_id)
       return false;
     }
