@@ -50,16 +50,24 @@ if (Meteor.isClient) {
 })
 
 Router.map( function () {
-  this.route('playlistRoute');
+  this.route('playlistRoute', {
+    path: 'playlist'
+  });
 });
 Router.map( function () {
-  this.route('songsRoute');
+  this.route('songsRoute' {
+    path: 'yoursongs'
+  });
 })
 Router.map( function () {
-  this.route('pendingRoute');
+  this.route('pendingRoute', {
+    path: 'pending'
+  });
 })
 Router.map( function () {
-  this.route('bannedRoute');
+  this.route('bannedRoute', {
+    path: 'banned'
+  });
 })
    
     /*
