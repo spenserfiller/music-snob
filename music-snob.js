@@ -3,12 +3,15 @@ Playlists = new Mongo.Collection('playlists')
 if (Meteor.isClient) {
   Template.playlistSelect.helpers({
     playlists: function () {
+      console.log(Playlists.find({}))
       return Playlists.find({});
     },
-    selected: function() {
+    isSelected: function() {
       if(this.name === Session.get('selected_playlist')){
+        console.log('returning selected')
         return 'selected'
       } else {
+        console.log('returning empty')
         return ""
       }
     }
