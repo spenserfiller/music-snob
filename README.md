@@ -36,3 +36,4 @@
 -User logins (spotify login adoption) Admin rights Veto Power/ Play Pause in browser
 -Vote to skip
 -Weight based play order
+-highlight songs already in playlist on search page

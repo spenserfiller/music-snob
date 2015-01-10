@@ -8,8 +8,8 @@ if (Meteor.isClient) {
       return Playlists.find({});
     }
   });
-  
 
+//search bar
   Template.search.events({
     "submit form.searches": function (event){
       var form = event.target
@@ -27,7 +27,8 @@ if (Meteor.isClient) {
     }
     
   });
-
+  //play button function
+//spotifysong template handler
   Template.spotifysong.events({
     "click .add-button": function (event) {
       var spotifyId = this.id;
@@ -37,12 +38,12 @@ if (Meteor.isClient) {
     }
 
   })
-  
+//recent tracks
   Template.spotifysong.recentTracks = function() {
     console.log("getting tracks!")
     return Session.get("recentTracks") || [];
   }
-
+//router maps
   Router.map( function (){
   this.route('home', {
     path: '/'
