@@ -59,8 +59,9 @@
                   <div class='large-2 columns'>{{name}}</div>
                   <div class='large-4 columns'>{{album.name}}</div>
                 </div>
-                <div class="large-1 columns" name='add'><a href='#' class='add-button'>Add</a></div>
-                <div class="large-3 columns" style='padding: 2px'><iframe src="https://embed.spotify.com/?uri=spotify:track:{{id}}" width="200" height="80" frameborder="0" allowtransparency="true"></iframe></div>
+                <div class="large-3 columns" name='add'>{{> playlistSelect}}<a href='#' class='add-button'>Add</a></div>
+                <div class="large-1 columns" style='padding: 2px'>
+                  <img src='images/play.jpg' height='40' width='40'></div>
                 </div> 
                 {{/each}}
 </template>
@@ -97,8 +98,8 @@
                       <div class='large-2 columns'>Track</div>
                       <div class='large-4 columns'>Album</div>
                     </div>
-                    <div class="large-1 columns">Add</div>
-                    <div class="large-3 columns">Preview</div>
+                    <div class="large-3 columns">Add</div>
+                    <div class="large-1 columns">Preview</div>
                   </div> 
                 {{> spotifysong}}
               </div>
@@ -129,39 +130,6 @@
         </div>
   </div>
 
-  </template>
-  <!--   songs in a playlist -->
-  <template name="playlistSongs">
-      <div class="row">
-        <h3>Current Tracks in Playlist</h3> 
-            <div class="large-12 columns">
-  
-              <div class="large-12 columns song-result">
-                <div class="large-8 columns">
-                  <div class='large-2 columns'>Artist</div>
-                  <div class='large-2 columns'>Track</div>
-                  <div class='large-4 columns'>Album</div>
-                </div>
-                <div class="large-1 columns">Add</div>
-                <div class="large-3 columns">Preview</div>
-              </div> 
-            {{> playlistTracks}}
-          </div>
-        </div> 
-  </template>
-<!--   Playlist tracks display -->
-  <template name="playlistTracks">
-     {{#each playlistTracks.tracks.items}}
-        <div class="large-12 columns song-result">
-        <div class="large-8 columns">
-          <div class='large-2 columns'>{{artists.[0].name}}</div>
-          <div class='large-2 columns'>{{name}}</div>
-          <div class='large-4 columns'>{{album.name}}</div>
-        </div>
-        <div class="large-1 columns" name='add'><a href='#' class='add-button'>Add</a></div>
-        <div class="large-3 columns" style='padding: 2px'><iframe src="https://embed.spotify.com/?uri=spotify:track:{{id}}" width="200" height="80" frameborder="0" allowtransparency="true"></iframe></div>
-        </div> 
-        {{/each}}
   </template>
 <!-- MKS auth login -->
 <template name="MyPage">
