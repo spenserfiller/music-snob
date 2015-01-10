@@ -49,48 +49,27 @@ if (Meteor.isClient) {
   });
 })
 
-Router.map( function () {
-  this.route('playlistRoute', {
-    path: 'playlist'
-  });
-});
-Router.map( function () {
-  this.route('songsRoute', {
-    path: 'yoursongs'
-  });
-})
-Router.map( function () {
-  this.route('pendingRoute', {
-    path: 'pending'
-  });
-})
-Router.map( function () {
-  this.route('bannedRoute', {
-    path: 'banned'
-  });
-})
-   
-    /*
-"submit .new-song": function (event) {
-  // This function is called when the new song form is submitted
-    var playlistName = event.target.playlistName.value;
-    var spotifyId =  
-    
-    Playlists.insert({
-      name: playlistName,
-      spotify_id: spotifyId,
-      songs: {}, 
-      createdAt: new Date() // current time
+  Router.map( function () {
+    this.route('playlistRoute', {
+      path: 'playlist'
     });
-
-    // Clear form
-    event.target.playlistName.value = "";
-
-    // Prevent default form submit
-    return false;
-  }
-});
-*/
+  });
+  Router.map( function () {
+    this.route('songsRoute', {
+      path: 'yoursongs'
+    });
+  })
+  Router.map( function () {
+    this.route('pendingRoute', {
+      path: 'pending'
+    });
+  })
+  Router.map( function () {
+    this.route('bannedRoute', {
+      path: 'banned'
+    });
+  })
+   
 }
 
 
