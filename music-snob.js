@@ -53,7 +53,7 @@ if (Meteor.isClient) {
     "click .add-button": function (event) {
       var spotifyId = this.id;
       console.log(spotifyId)
-      Meteor.call("addToPlaylist", this.id, 'placehold');
+      Meteor.call("addToPlaylist", this, 'placehold');
       return false;
     }
 
@@ -67,9 +67,9 @@ if (Meteor.isClient) {
   // playlist tracks
   Template.playlistRoute.playlistTracks = function () {
     console.log('getting playlist tracks!');
-    songs = Playlists.find({})
-    console.log('songs: ' + songs);
-    return false
+    songs = Playlists.findOne({name: "MakerSquare sick beats"})
+    console.log('songs: ' + songs.songs);
+    return songs.songs
   }
 
 //router maps
@@ -123,10 +123,16 @@ if (Meteor.isServer) {
 			}
 		},
 
-    addToPlaylist: function(spotifyId, playlist){
+    addToPlaylist: function(spotifySong, playlist){
       Playlists.update(
         { name: "MakerSquare sick beats"},
-        { $push: { songs: spotifyId } }
+        { $push: { songs:
+                  {
+                    artists: spotifySong.artists,
+                    name: spotifySong.name,
+                    album: spotifySong.album.name,
+                    id: spotifySong.id
+         } } }
       )
     }
 	});
