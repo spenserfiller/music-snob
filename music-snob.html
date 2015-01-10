@@ -34,7 +34,7 @@
       <div class="row">
         <div class="large-12 columns" role="content">
           <article>
-           <div class="row">
+           <div class="row searchbar">
             <!-- search bar -->
              {{> search}}
 
@@ -74,7 +74,8 @@
 </template>
 <!-- search template -->
 <template name='search'>
-  <div class="large-5 columns">
+            <div class="large-1 columns"></div>
+            <div class="large-5 columns">
                <form class="searches" action=''>
                  <input type='text' name='query' placeholder='Search for music here!' style="width: 450px;height: 55px;">
                </form>
@@ -82,11 +83,12 @@
              <div class="large-5 columns">
                <button type='submit' style="height: 55px;">Search!</button>
              </div>
+             <div class="large-1 columns"></div>
   </template>
 <!-- home -->
 <template name='home'>
             <div class="row">
-              <h3><a href="#">Search Results</a></h3> 
+              <h3>Search Results</h3> 
                 <div class="large-12 columns">
       
                   <div class="large-12 columns song-result">

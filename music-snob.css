@@ -15,3 +15,12 @@
   border-style: solid;
   border-color: black;
 }
+.button-group {
+  padding-top: 9px;
+}
+h3 {
+  text-align: center;
+}
+.searchbar {
+  border-color: black;
+}
