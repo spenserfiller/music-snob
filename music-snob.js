@@ -67,7 +67,8 @@ if (Meteor.isClient) {
   // playlist tracks
   Template.playlistRoute.playlistTracks = function () {
     console.log('getting playlist tracks!');
-    songs = Playlists.findOne({name: "MakerSquare sick beats"})
+    var playlist = Session.get('selected_playlist')
+    var songs = Playlists.findOne({name: "MakerSquare sick beats"})
     console.log('songs: ' + songs.songs);
     return songs.songs
   }
