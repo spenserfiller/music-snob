@@ -26,7 +26,7 @@
              <li><a href="{{pathFor 'bannedRoute'}}" class="button">Banned List</a></li>
             </ul>
           </div>
-          <h1>Music Snob<small></small></h1>
+          <h1>Music Snob<small>{{>MyPage}}</small></h1>
           <hr/>
         </div>
       </div>
@@ -113,3 +113,7 @@
           <hr/>    
         </div>
   </template>
+<!-- MKS auth login -->
+<template name="MyPage">
+  {{> loginButtons}}
+</template>
