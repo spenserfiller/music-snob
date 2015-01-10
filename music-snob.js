@@ -3,11 +3,16 @@ Playlists = new Mongo.Collection('playlists');
 if (Meteor.isClient) {
   Template.playlistSelect.helpers({
     playlists: function () {
-      play = Playlists.find({});
-      console.log(play);
       return Playlists.find({});
     }
   });
+
+  Template.playlistSelect.events({
+    'change select.select-option':function (event, template){
+      Session.set('selected_playlist', template.find('.select-option').value);
+      console.log("value changed")
+    }
+  })
 
 //search bar
   Template.search.events({
