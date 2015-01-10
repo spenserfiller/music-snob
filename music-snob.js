@@ -24,16 +24,13 @@ if (Meteor.isClient) {
 				}
 			});
       return false;
-    }
+    },
+
+      
     
   });
   //play button function
-  Template.spotifyPlayer.events({
-    'click .play-button': function (event){
-      console.log('stuff');
-      return Session.get("recentTracks");
-    }
-  });
+
 
 //spotifysong template handler
   Template.spotifysong.events({
