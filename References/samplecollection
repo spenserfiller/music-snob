@@ -1,28 +1,36 @@
 Playlists
 {
-  _id:
-  owner_id:
-  name:
-  spotify_id:
-  songs: {
-    spotify_id:
-    song_id:
+  _id:,
+  owner_id:,
+  name:,
+  spotify_id:,
+  songs: [{
+    spotify_id:,
+    song_id:,
     votes:{
-      count:
+      count:,
       users:{
         user_id:
        }
       }  
-    }
+    }]
 }
 
 USERS
 {
-  _id:
-  username:
-  password:
-  songs: {
-    song_id:
-    vote: true/false
-  }
+  _id:,
+  username:,
+  password:,
+  songs: [
+    {
+      song_id:
+      vote: true/false
+      }
+  ]
+}
+
+
+{
+  name: 'MakerSquare sick beats',
+  songs: []
 }

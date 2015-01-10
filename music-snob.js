@@ -24,8 +24,18 @@ if (Meteor.isClient) {
 				}
 			});
       return false
-    }  
+    }
+    
   });
+
+  Template.spotifysong.events({
+    "click .add-button": function (event) {
+      var spotify_id = event.target.spotify_id
+      console.log(spotify_id)
+      return false;
+    }
+
+  })
   
   Template.spotifysong.recentTracks = function() {
     console.log("getting tracks!")
