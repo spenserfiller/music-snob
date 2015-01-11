@@ -160,7 +160,9 @@
       </div> 
     </div>
     <div class="large-9 columns">
+       {{#if isCurrentUser}}
       {{#each playlistTracks}}
+     
         <div class="large-12 columns song-result">
           <div class="large-8 columns">
             <div class='large-3 columns'>{{artists.[0].name}}</div>
@@ -169,7 +171,10 @@
           </div>
         <div class="large-4 columns" style='padding: 2px'><iframe src="https://embed.spotify.com/?uri=spotify:track:{{id}}" width="200" height="80" frameborder="0" allowtransparency="true"></iframe></div>
         </div> 
+
       {{/each}}
+      {{/if}}
+    
     </div>
   </div>
 </template>
