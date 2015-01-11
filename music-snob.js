@@ -17,6 +17,16 @@ if (Meteor.isClient) {
       }
     }
   });
+
+  Template.songsRoute.helpers({
+    isUser: function () {
+      if(this.userId === Meteor.userId()){
+        return true;
+      } else {
+        return false;
+      }
+    }
+  });
   
  //select playlist
   Template.playlistSelect.events({
@@ -77,9 +87,9 @@ if (Meteor.isClient) {
    Template.songsRoute.playlistTracks = function () {
     var playlist = Session.get('selected_playlist');
     var songs = Playlists.findOne({name: playlist});
-    songs = songs.find({userId: Meteor.userId()});
-    alert('getting playlist tracks!');
-    console.log('songs: ' + songs.songs);
+    // songs = songs.find({userId: Meteor.userId()});
+    // alert('getting playlist tracks!');
+    // console.log('songs: ' + songs.songs);
     return songs.songs;
   };
   //pending tracks
