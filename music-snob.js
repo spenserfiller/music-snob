@@ -161,7 +161,13 @@ if (Meteor.isServer) {
                     banned: false
          } } }
       );
-    }
+    },
+    // inPlaylist: function(spotifySongId, playlist){
+    //   Playlists.findOne(
+    //       {
+    //         name: {$ne: playlist},
+    //         score: {$ne: {id: spotifySongId} })
+    // }
 	});
 }
 
