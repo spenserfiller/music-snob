@@ -132,7 +132,9 @@ if (Meteor.isServer) {
                     artists: spotifySong.artists,
                     name: spotifySong.name,
                     album: spotifySong.album.name,
-                    id: spotifySong.id
+                    id: spotifySong.id,
+                    pending: true,
+                    banned: false
          } } }
       )
     }
