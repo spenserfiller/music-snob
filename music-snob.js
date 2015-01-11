@@ -40,6 +40,7 @@ if (Meteor.isClient) {
           Session.set("recentTracks",respJson);
 				}
 			});
+			Router.go('home');
       return false;
     },
   });
