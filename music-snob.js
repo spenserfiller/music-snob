@@ -81,6 +81,9 @@ if (Meteor.isClient) {
 			Router.go('home');
       return false;
     },
+    "submit button.pushIt": function (event){
+      
+    }
   });
   //play button function
 
