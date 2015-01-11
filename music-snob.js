@@ -1,5 +1,5 @@
 Playlists = new Mongo.Collection('playlists');
-
+// client side logic
 if (Meteor.isClient) {
   Template.playlistSelect.helpers({
     playlists: function () {
@@ -17,7 +17,7 @@ if (Meteor.isClient) {
     }
   });
   
-
+ //select playlist
   Template.playlistSelect.events({
     'change select.select-option':function (event, template){
       Session.set('selected_playlist', template.find('.select-option').value);
@@ -68,6 +68,7 @@ if (Meteor.isClient) {
     console.log('songs: ' + songs.songs);
     return songs.songs;
   };
+  //pending tracks
  Template.pendingRoute.playlistTracks = function () {
     console.log('getting playlist tracks!');
     var playlist = Session.get('selected_playlist');
@@ -78,10 +79,9 @@ if (Meteor.isClient) {
 //router maps
   Router.map( function (){
   this.route('home', {
-    path: '/'
+      path: '/'
+    });
   });
-});
-
   Router.map( function () {
     this.route('playlistRoute', {
       path: 'playlist'
@@ -102,12 +102,11 @@ if (Meteor.isClient) {
       path: 'banned'
     });
   });
-   
 }
 
 
 
-
+// server functions
 if (Meteor.isServer) {
 	Meteor.methods({
 		searchTrack: function(track) {
@@ -125,7 +124,7 @@ if (Meteor.isServer) {
 				throw new Meteor.Error(result.statusCode, errorJson.error);
 			}
 		},
-
+    //add to playlist DB function
     addToPlaylist: function(spotifySong, playlist){
       Playlists.update(
         { name: "MakerSquare sick beats"},
