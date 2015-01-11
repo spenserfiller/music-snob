@@ -153,8 +153,8 @@ if (Meteor.isClient) {
     return songs.songs;
   };
   Template.pushToSpotify.events({
-    "click submit.pushIt": function (event){
-
+    "click .pushIt": function (event){
+      Meteor.call('addToSpotify', this.id);
     }
   });
 
