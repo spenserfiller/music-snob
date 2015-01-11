@@ -154,7 +154,9 @@ if (Meteor.isClient) {
   };
   Template.pushToSpotify.events({
     "click .pushIt": function (event){
-      Meteor.call('addToSpotify', this.id);
+      var playlist = Session.get('selected_playlist');
+      var songs = Playlists.findOne({name: playlist});
+      Meteor.call('addToSpotify', songs.songs.id);
     }
   });
 
