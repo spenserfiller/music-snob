@@ -239,20 +239,26 @@ if (Meteor.isServer) {
          } } }
       );
     },
-    // addToSpotify: function(){
-    //   var url = "https://api.spotify.com/v1/users/mksadmin/playlists/0bHrARQz4dzb2JFy7FUNzg/tracks";
-    //   Meteor.http.post(url, 
-    //     params:
-    //        ""
-    //     {timeout:30000}
-    //     );
-    // },
+    addToSpotify: function(spotifyid){
+      var url = "https://api.spotify.com/v1/users/mksadmin/playlists/0bHrARQz4dzb2JFy7FUNzg/tracks";
+      Meteor.http.post(url,
+        {data:
+          {code:code,
+            redirect_uri:redirectURI,
+            grant_type:'authorization_code',
+            client_id:'51b9e5920e2a4d2ebfca4b9350cd57de',
+            client_secret:'a1b8cfd6a340401f8b1a9bdaacca1ca5',
+            spotify_id:spotifyid
+          },
+            headers:{'Content-Type':'application/json'}
+          });
+},
     //change pending status
     approveSong: function(currentPlaylist, songId){
       Playlists.update(
         {name: currentPlaylist, "songs.id": songId},
         {$set: {"songs.$.pending" : false}}
-      )
+      );
     }
     // inPlaylist: function(spotifySongId, playlist){
     //   Playlists.findOne(
