@@ -48,10 +48,14 @@ if (Meteor.isClient) {
 //spotifysong template handler
   Template.spotifysong.events({
     "click .add-button": function (event) {
-      var spotifyId = this.id;
-      console.log(spotifyId);
-      Meteor.call("addToPlaylist", this, 'placehold');
-      return false;
+      if (! Meteor.userId()) {
+        alert(" You must be signed in to add to a playlist")
+        throw new Meteor.Error("not-authorized!");
+      }
+        var spotifyId = this.id;
+        console.log(spotifyId);
+        Meteor.call("addToPlaylist", this, 'placehold');
+        return false;
     }
 
   });
