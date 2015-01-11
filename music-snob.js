@@ -58,6 +58,21 @@ if (Meteor.isClient) {
       console.log("value changed");
     }
   });
+  
+  //admin add song
+  Template.pendingRoute.events({
+    'click .add-this': function (event){
+      console.log('click',this);
+      var currentPlaylist = Session.get('selected');
+      var newSong = this
+      newSong.pending = false
+      console.log(newSong);
+      Meteor.call('approveSong',this, newSong, currentPlaylist);
+    },
+    'click .ban-this': function (event){
+      console.log('click',this);
+    }
+  })
 
 //search bar
   Template.search.events({
@@ -210,6 +225,13 @@ if (Meteor.isServer) {
          } } }
       );
     },
+    //change pending status
+    approveSong: function(oldSong, newSong, currentPlaylist){
+      Playlists.update(
+        {name: currentPlaylist, songs:oldSong},
+         {$set: {"songs.$":newSong}
+         })
+    }
     // inPlaylist: function(spotifySongId, playlist){
     //   Playlists.findOne(
     //       {
