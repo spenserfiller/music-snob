@@ -15,6 +15,15 @@ if (Meteor.isClient) {
         console.log('returning empty');
         return "";
       }
+    },
+    isAdmin: function() {
+      var john = "mLoeB6zmEWYm8K8Dz";
+      var melissa = 'j5sjcSbKx4iT8SBkM';
+      var spenser = "NtJCDTsG5oawxCYDi";
+      var admin = Meteor.userId();
+      if(admin === john || admin === melissa || admin === spenser){
+          return true;
+      }
     }
   });
 
@@ -50,6 +59,7 @@ if (Meteor.isClient) {
           Session.set("recentTracks",respJson);
 				}
 			});
+			Router.go('home');
       return false;
     },
   });
@@ -85,11 +95,10 @@ if (Meteor.isClient) {
   };
   // your songs
    Template.songsRoute.playlistTracks = function () {
+    alert('getting playlist tracks!');
     var playlist = Session.get('selected_playlist');
     var songs = Playlists.findOne({name: playlist});
-    // songs = songs.find({userId: Meteor.userId()});
-    // alert('getting playlist tracks!');
-    // console.log('songs: ' + songs.songs);
+    console.log('songs: ' + songs.songs);
     return songs.songs;
   };
   //pending tracks
@@ -108,6 +117,8 @@ if (Meteor.isClient) {
     console.log('songs: ' + songs.songs);
     return songs.songs;
   };
+
+
 //router maps
   Router.map( function (){
   this.route('home', {
@@ -182,7 +193,7 @@ if (Meteor.isServer) {
                     id: spotifySong.id,
                     pending: true,
                     banned: false,
-                    userId: Meteor.userId()
+                    userId: Meteor.id
          } } }
       );
     },
