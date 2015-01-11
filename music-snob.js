@@ -153,9 +153,11 @@ if (Meteor.isClient) {
     console.log('songs: ' + songs.songs);
     return songs.songs;
   };
-  // Template.admin.adminUser = function () {
+  Template.pushToSpotify.events({
+    "click submit.pushIt": function (event){
 
-  // };
+    }
+  });
 
 
 //router maps
@@ -235,6 +237,14 @@ if (Meteor.isServer) {
                     userId: Meteor.id
          } } }
       );
+    },
+    addToSpotify: function(){
+      var url = "https://api.spotify.com/v1/users/mksadmin/playlists/0bHrARQz4dzb2JFy7FUNzg/tracks";
+      Meteor.http.post(url, 
+        params:
+           ""
+        {timeout:30000}
+        );
     },
     //change pending status
     approveSong: function(oldSong, newSong, currentPlaylist){
