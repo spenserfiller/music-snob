@@ -239,14 +239,14 @@ if (Meteor.isServer) {
          } } }
       );
     },
-    addToSpotify: function(){
-      var url = "https://api.spotify.com/v1/users/mksadmin/playlists/0bHrARQz4dzb2JFy7FUNzg/tracks";
-      Meteor.http.post(url, 
-        params:
-           ""
-        {timeout:30000}
-        );
-    },
+    // addToSpotify: function(){
+    //   var url = "https://api.spotify.com/v1/users/mksadmin/playlists/0bHrARQz4dzb2JFy7FUNzg/tracks";
+    //   Meteor.http.post(url, 
+    //     params:
+    //        ""
+    //     {timeout:30000}
+    //     );
+    // },
     //change pending status
     approveSong: function(currentPlaylist, songId){
       Playlists.update(
