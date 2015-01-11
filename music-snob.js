@@ -1,18 +1,18 @@
-Playlists = new Mongo.Collection('playlists')
+Playlists = new Mongo.Collection('playlists');
 
 if (Meteor.isClient) {
   Template.playlistSelect.helpers({
     playlists: function () {
-      console.log(Playlists.find({}))
+      console.log(Playlists.find({}));
       return Playlists.find({});
     },
     isSelected: function() {
       if(this.name === Session.get('selected_playlist')){
-        console.log('returning selected')
-        return 'selected'
+        console.log('returning selected');
+        return 'selected';
       } else {
-        console.log('returning empty')
-        return ""
+        console.log('returning empty');
+        return "";
       }
     }
   });
@@ -21,15 +21,15 @@ if (Meteor.isClient) {
   Template.playlistSelect.events({
     'change select.select-option':function (event, template){
       Session.set('selected_playlist', template.find('.select-option').value);
-      console.log("value changed")
+      console.log("value changed");
     }
-  })
+  });
 
 //search bar
   Template.search.events({
     "submit form.searches": function (event){
-      var form = event.target
-      console.log(form.query.value)
+      var form = event.target;
+      console.log(form.query.value);
       Meteor.call('searchTrack', form.query.value, function(err, respJson) {
 				if(err) {
 					window.alert("Error: " + err.reason);
@@ -41,44 +41,46 @@ if (Meteor.isClient) {
 			});
       return false;
     },
-
-      
-    
   });
   //play button function
-
 
 //spotifysong template handler
   Template.spotifysong.events({
     "click .add-button": function (event) {
       var spotifyId = this.id;
-      console.log(spotifyId)
+      console.log(spotifyId);
       Meteor.call("addToPlaylist", this, 'placehold');
       return false;
     }
 
-  })
+  });
 //recent tracks
   Template.spotifysong.recentTracks = function() {
-    console.log("getting tracks!")
+    console.log("getting tracks!");
     return Session.get("recentTracks") || [];
   };
   
   // playlist tracks
   Template.playlistRoute.playlistTracks = function () {
     console.log('getting playlist tracks!');
-    var playlist = Session.get('selected_playlist')
-    var songs = Playlists.findOne({name: "MakerSquare sick beats"})
+    var playlist = Session.get('selected_playlist');
+    var songs = Playlists.findOne({name: "MakerSquare sick beats"});
     console.log('songs: ' + songs.songs);
-    return songs.songs
-  }
-
+    return songs.songs;
+  };
+ Template.pendingRoute.playlistTracks = function () {
+    console.log('getting playlist tracks!');
+    var playlist = Session.get('selected_playlist');
+    var songs = Playlists.findOne({name: "MakerSquare sick beats"});
+    console.log('songs: ' + songs.songs);
+    return songs.songs;
+  };
 //router maps
   Router.map( function (){
   this.route('home', {
     path: '/'
   });
-})
+});
 
   Router.map( function () {
     this.route('playlistRoute', {
@@ -89,17 +91,17 @@ if (Meteor.isClient) {
     this.route('songsRoute', {
       path: 'yoursongs'
     });
-  })
+  });
   Router.map( function () {
     this.route('pendingRoute', {
       path: 'pending'
     });
-  })
+  });
   Router.map( function () {
     this.route('bannedRoute', {
       path: 'banned'
     });
-  })
+  });
    
 }
 
@@ -110,7 +112,7 @@ if (Meteor.isServer) {
 	Meteor.methods({
 		searchTrack: function(track) {
 			var url = "https://api.spotify.com/v1/search?q=" + track + "&type=track&limit=10";
-			console.log(url)
+			console.log(url);
 			//synchronous GET
 			var result = Meteor.http.get(url, {timeout:30000});
 			if(result.statusCode==200) {
@@ -136,7 +138,7 @@ if (Meteor.isServer) {
                     pending: true,
                     banned: false
          } } }
-      )
+      );
     }
 	});
 }
