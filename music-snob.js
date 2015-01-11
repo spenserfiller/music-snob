@@ -54,7 +54,7 @@ if (Meteor.isClient) {
       }
         var spotifyId = this.id;
         console.log(spotifyId);
-        Meteor.call("addToPlaylist", this, 'placehold');
+        Meteor.call("addToPlaylist", this, Session.get('selected_playlist'));
         return false;
     }
 
@@ -69,14 +69,14 @@ if (Meteor.isClient) {
   Template.playlistRoute.playlistTracks = function () {
     console.log('getting playlist tracks!');
     var playlist = Session.get('selected_playlist');
-    var songs = Playlists.findOne({name: "MakerSquare sick beats"});
+    var songs = Playlists.findOne({name: playlist});
     console.log('songs: ' + songs.songs);
     return songs.songs;
   };
   // your songs
    Template.songsRoute.playlistTracks = function () {
     var playlist = Session.get('selected_playlist');
-    var songs = Playlists.findOne({name: "MakerSquare sick beats"});
+    var songs = Playlists.findOne({name: playlist});
     songs = songs.find({userId: Meteor.userId()});
     alert('getting playlist tracks!');
     console.log('songs: ' + songs.songs);
@@ -86,7 +86,7 @@ if (Meteor.isClient) {
  Template.pendingRoute.playlistTracks = function () {
     console.log('getting playlist tracks!');
     var playlist = Session.get('selected_playlist');
-    var songs = Playlists.findOne({name: "MakerSquare sick beats"});
+    var songs = Playlists.findOne({name: playlist});
     console.log('songs: ' + songs.songs);
     return songs.songs;
   };
@@ -94,7 +94,7 @@ if (Meteor.isClient) {
   Template.bannedRoute.playlistTracks = function () {
     console.log('getting playlist tracks!');
     var playlist = Session.get('selected_playlist');
-    var songs = Playlists.findOne({name: "MakerSquare sick beats"});
+    var songs = Playlists.findOne({name: playlist});
     console.log('songs: ' + songs.songs);
     return songs.songs;
   };
@@ -163,7 +163,7 @@ if (Meteor.isServer) {
     //add to playlist DB function
     addToPlaylist: function(spotifySong, playlist){
       Playlists.update(
-        { name: "MakerSquare sick beats"},
+        { name: playlist},
         { $push: { songs:
                   {
                     artists: spotifySong.artists,
