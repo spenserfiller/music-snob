@@ -73,6 +73,19 @@ if (Meteor.isClient) {
     console.log('songs: ' + songs.songs);
     return songs.songs;
   };
+  // your songs
+   Template.songsRoute.playlistTracks = function () {
+    if (Meteor.userId()){
+      alert('getting playlist tracks!');
+      var playlist = Session.get('selected_playlist');
+      var songs = Playlists.findOne({name: "MakerSquare sick beats"});
+      console.log('songs: ' + songs.songs);
+      return songs.songs;
+    }
+    else {
+      alert('you aint got shit');
+    }
+  };
   //pending tracks
  Template.pendingRoute.playlistTracks = function () {
     console.log('getting playlist tracks!');
