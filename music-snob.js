@@ -67,16 +67,14 @@ if (Meteor.isClient) {
   //admin add song
   Template.pendingRoute.events({
     'click .add-this': function (event){
-      console.log('click',this);
       var currentPlaylist = Session.get('selected_playlist');
-      // var newSong = this
-      // newSong.pending = false
-      // console.log(newSong);
       console.log(this.id)
       Meteor.call('approveSong', currentPlaylist, this.id);
     },
     'click .ban-this': function (event){
       console.log('click',this);
+      var currentPlaylist = Session.get('selected_playlist');
+      Meteor.call('banSong', currentPlaylist, this.id);
     }
   })
 
@@ -252,6 +250,16 @@ if (Meteor.isServer) {
       Playlists.update(
         {name: currentPlaylist, "songs.id": songId},
         {$set: {"songs.$.pending" : false}}
+      )
+    },
+    
+    //ban a song
+    banSong: function(currentPlaylist, songId){
+      Playlists.update(
+        {name: currentPlaylist, "songs.id": songId},
+        {$set: {
+          "songs.$.banned" : true, 
+          "songs.$.pending" : false}}
       )
     }
     // inPlaylist: function(spotifySongId, playlist){
