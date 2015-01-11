@@ -15,10 +15,15 @@ if (Meteor.isClient) {
         console.log('returning empty');
         return "";
       }
-    },
-    isAdmin: function() {
+    }
+    
+  });
+ 
+   
+  Template.search.helpers({
+     isAdmin: function() {
       var john = "mLoeB6zmEWYm8K8Dz";
-      var melissa = 'j5sjcSbKx4iT8SBkM';
+      var melissa = "j5sjcSbKx4iT8SBkM";
       var spenser = "NtJCDTsG5oawxCYDi";
       var admin = Meteor.userId();
       if(admin === john || admin === melissa || admin === spenser){
@@ -116,6 +121,9 @@ if (Meteor.isClient) {
     console.log('songs: ' + songs.songs);
     return songs.songs;
   };
+  // Template.admin.adminUser = function () {
+
+  // };
 
 
 //router maps

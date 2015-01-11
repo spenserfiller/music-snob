@@ -15,10 +15,12 @@
         <div class="large-12 columns">
           <div class="nav-bar right">
            <ul class="button-group">
+            
              <li><a href="{{pathFor 'playlistRoute'}}" class="button">Playlists</a></li>
              <li><a href="{{pathFor 'songsRoute'}}" class="button">Your songs</a></li>
              <li><a href="{{pathFor 'pendingRoute'}}" class="button">Pending</a></li>
              <li><a href="{{pathFor 'bannedRoute'}}" class="button">Banned List</a></li>
+
             </ul>
           </div>
           <h1 class='snob'>Music Snob<a class='login'>{{>MyPage}}</a></h1>
@@ -75,7 +77,11 @@
    <div class="large-1 columns">
      <a href="{{pathFor 'home'}}"><button type='submit' style="height: 55px;">Search!</button></a>
    </div>
-   <div class="large-4 columns"></div>
+   <div class="large-4 columns">
+    {{#if isAdmin}}
+    {{>pushToSpotify}}
+    {{/if}}
+  </div>
 </template>
 <!-- home -->
 <template name='home'>
@@ -248,3 +254,6 @@
   </div>
   </div>
 </template>
+<template name='pushToSpotify'>
+  <button type='submit'>Push</button>
+  </template>
