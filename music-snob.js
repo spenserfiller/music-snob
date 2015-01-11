@@ -41,6 +41,20 @@ if (Meteor.isClient) {
       }
     }
   });
+
+  Template.pendingRoute.helpers({
+    isAdmin: function() {
+      var john = "mLoeB6zmEWYm8K8Dz";
+      var melissa = 'j5sjcSbKx4iT8SBkM';
+      var spenser = "NtJCDTsG5oawxCYDi";
+      var admin = Meteor.userId();
+      if(admin === john || admin === melissa || admin === spenser){
+          return true;
+      } else {
+        return false;
+      }
+    }
+  })
   
  //select playlist
   Template.playlistSelect.events({
