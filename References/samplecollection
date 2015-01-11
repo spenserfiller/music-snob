@@ -39,3 +39,10 @@ db.playlists.insert({name: "MakerSquare sick beats"})
 Client ID 51b9e5920e2a4d2ebfca4b9350cd57de
 
 Client Secret a1b8cfd6a340401f8b1a9bdaacca1ca5
+
+
+
+db.playlists.update(
+  {name: "MakerSquare sick beats", "songs.id": "2NUz5P42WqkxilbI8ocN76"},
+  {$set: {"items.$.pending" : false}}
+  )
