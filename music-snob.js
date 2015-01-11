@@ -76,6 +76,14 @@ if (Meteor.isClient) {
     console.log('songs: ' + songs.songs);
     return songs.songs;
   };
+  //banned tracks
+  Template.bannedRoute.playlistTracks = function () {
+    console.log('getting playlist tracks!');
+    var playlist = Session.get('selected_playlist');
+    var songs = Playlists.findOne({name: "MakerSquare sick beats"});
+    console.log('songs: ' + songs.songs);
+    return songs.songs;
+  };
 //router maps
   Router.map( function (){
   this.route('home', {
