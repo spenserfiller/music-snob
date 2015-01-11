@@ -48,10 +48,14 @@ if (Meteor.isClient) {
 //spotifysong template handler
   Template.spotifysong.events({
     "click .add-button": function (event) {
-      var spotifyId = this.id;
-      console.log(spotifyId);
-      Meteor.call("addToPlaylist", this, 'placehold');
-      return false;
+      if (! Meteor.userId()) {
+        alert(" You must be signed in to add to a playlist")
+        throw new Meteor.Error("not-authorized!");
+      }
+        var spotifyId = this.id;
+        console.log(spotifyId);
+        Meteor.call("addToPlaylist", this, 'placehold');
+        return false;
     }
 
   });
@@ -68,6 +72,19 @@ if (Meteor.isClient) {
     var songs = Playlists.findOne({name: "MakerSquare sick beats"});
     console.log('songs: ' + songs.songs);
     return songs.songs;
+  };
+  // your songs
+   Template.songsRoute.playlistTracks = function () {
+    if (Meteor.userId()){
+      alert('getting playlist tracks!');
+      var playlist = Session.get('selected_playlist');
+      var songs = Playlists.findOne({name: "MakerSquare sick beats"});
+      console.log('songs: ' + songs.songs);
+      return songs.songs;
+    }
+    else {
+      alert('you aint got shit');
+    }
   };
   //pending tracks
  Template.pendingRoute.playlistTracks = function () {
