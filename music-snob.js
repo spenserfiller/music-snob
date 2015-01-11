@@ -233,7 +233,7 @@ if (Meteor.isServer) {
                     id: spotifySong.id,
                     pending: true,
                     banned: false,
-                    userId: Meteor.id
+                    userId: Meteor.userId()
          } } }
       );
     },
