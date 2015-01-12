@@ -81,8 +81,9 @@ if (Meteor.isClient) {
   Template.playlistRoute.events({
     'click .playButton': function (event){
       console.log(this.id);
-      var songId = this.id;
-      return songId;
+      var songId = "https://embed.spotify.com/?uri=spotify:track:" + this.id
+      $('.player-refresh').attr("src", songId)
+      return false;
     }
   }),
 
