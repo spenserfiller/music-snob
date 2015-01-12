@@ -48,8 +48,12 @@ if (Meteor.isClient) {
       var john = "mLoeB6zmEWYm8K8Dz";
       var melissa = 'j5sjcSbKx4iT8SBkM';
       var spenser = "NtJCDTsG5oawxCYDi";
+      var john2 = "g9GpYvKjmqJFYypxr"
+      var melissa2 = "uuD3YYgCwScWemQez"
+      var spenser2 = "Jzq7REuFjRaTJPMNj"
       var admin = Meteor.userId();
-      if(admin === john || admin === melissa || admin === spenser){
+      if(admin === john || admin === melissa || admin === spenser || 
+          admin === john2 || admin === melissa2 || admin === spenser2){
           return true;
       } else {
         return false;
@@ -137,6 +141,7 @@ if (Meteor.isClient) {
 //spotifysong template handler
   Template.spotifysong.events({
     "click .add-button": function (event) {
+      Session.set('selected_playlist', 'MKS Demo Playlist');
       if (! Meteor.userId()) {
         alert(" You must be signed in to add to a playlist");
         throw new Meteor.Error("not-authorized!");
@@ -371,11 +376,11 @@ if (Meteor.isServer) {
         {$set: {'songs.$.banned': false}}
       );
     },
-    createPlaylist: function (){
-      if(Playslists.find({name: 'MKS Demo Playlist'})){
+    createPlaylist: function (playlistName){
+      if(Playslists.find({name: playlistName})){
         return true;
       }
-      Playlists.insert({name: "MKS Demo Playlist"})
+      Playlists.insert({name: playlistName})
     }
     // inPlaylist: function(spotifySongId, playlist){
     //   Playlists.findOne(
