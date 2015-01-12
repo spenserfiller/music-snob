@@ -81,8 +81,32 @@ if (Meteor.isClient) {
   Template.playlistRoute.events({
     'click .playButton': function (event){
       console.log(this.id);
-      var songId = "https://embed.spotify.com/?uri=spotify:track:" + this.id
-      $('.player-refresh').attr("src", songId)
+      var songId = "https://embed.spotify.com/?uri=spotify:track:" + this.id;
+      $('.player-refresh').attr("src", songId);
+      return false;
+    }
+  }),
+  Template.songsRoute.events({
+    'click .playButton': function (event){
+      console.log(this.id);
+      var songId = "https://embed.spotify.com/?uri=spotify:track:" + this.id;
+      $('.player-refresh').attr("src", songId);
+      return false;
+    }
+  }),
+  Template.bannedRoute.events({
+    'click .playButton': function (event){
+      console.log(this.id);
+      var songId = "https://embed.spotify.com/?uri=spotify:track:" + this.id;
+      $('.player-refresh').attr("src", songId);
+      return false;
+    }
+  }),
+  Template.pendingRoute.events({
+    'click .playButton': function (event){
+      console.log(this.id);
+      var songId = "https://embed.spotify.com/?uri=spotify:track:" + this.id;
+      $('.player-refresh').attr("src", songId);
       return false;
     }
   }),
