@@ -54,7 +54,7 @@ if (Meteor.isClient) {
         return false;
       }
     }
-  })
+  });
   
  //select playlist
   Template.playlistSelect.events({
@@ -262,13 +262,16 @@ if (Meteor.isServer) {
     },
     addToSpotify: function(trackUris){
       var url = "https://api.spotify.com/v1/users/mksadmin/playlists/0bHrARQz4dzb2JFy7FUNzg/tracks";
-      Meteor.http.post(url,
-        {params:
+      Meteor.http.put(url,
+        {data:
           {
-            "authorization": "Bearer BQDLH2CeDD-ikGA5Zv4Qu_YdQ3gD1c__7KnbpTg3aHNf_2LzDf9Deu0_gHasVPyn35_BKr6v-j2i4Yz0-oBBjTO7mlzSJlcVQXUsmaSrIjAE5BGdZdcjdu0-ffQolKCrB1FjASbQE5H-jffCU4FjcL9Kvi45RSEHy4rLOvUvw9VlAOpNCCYAzRzH08a5QXg7Xn_oz3Z_QeEx0OQ33QQTLS_5",
+            "uris": trackUris
+          },
+          headers:
+          {
             "accept": "application/json",
             "Content-Type": "application/json",
-            "uris": trackUris
+            "Authorization": "Bearer BQAC4CNcEN7pBSb_yvbEdwAWk3_VvA1lqQ098kSdgARN6I4uu_IMcfXKx1tYz-kz5UPSeFh4ghqDWjpZI6yLZMGIG3TMN8x9aRXteZVEYyoJQ803VLb5sxCJcem5ScmVA3u8Mg4oDY6Vxeb6fvNxSiiUUZhVH8P3YtPbk6XqRytK2eCWJOx1nux9dDloakfcL03cn85vhE3X43Jy-HtEPBEj"
           }
           });
         },
