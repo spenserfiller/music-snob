@@ -337,7 +337,7 @@ if (Meteor.isServer) {
           {
             "accept": "application/json",
             "Content-Type": "application/json",
-            "Authorization": 'Bearer ' + auth
+            "Authorization": 'Bearer BQCx_nqKHkMLLrD3cdTDcLsRGZuh0MCG01FERKEgVvQ7uUg-oWYceoD9xYOlCqqitQqdiXuyPx6WvT87o01TgdVYsmkW1K7Fjo1pkDb3uA4AV5bs-9r1Uf-nntfLT91teXNO900EWL-EM1fwtb5cqeU6HW25Uop9ezh6lEo7tsF9kFLxMBgq6gHi7j-RV1UDfurdNbL1dHSQbN5Bc_C4fFQd'
           }
           });
         },
