@@ -293,15 +293,15 @@ if (Meteor.isServer) {
         {$set: {
           "songs.$.banned" : true,
           "songs.$.pending" : false}}
-      )
+      );
 
     },
     //Converts playlist to a list of URIs
     playlistToUri: function(playlist) {
-      var playlistUris = []
+      var playlistUris = [];
       playlist.songs.forEach(function(song) {
         playlistUris.push("spotify:track:"+song.id);
-      })
+      });
       return playlistUris
     }
     // inPlaylist: function(spotifySongId, playlist){
