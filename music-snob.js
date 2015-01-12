@@ -239,20 +239,20 @@ if (Meteor.isServer) {
          } } }
       );
     },
-    addToSpotify: function(spotifyid){
+    addToSpotify: function(){
       var url = "https://api.spotify.com/v1/users/mksadmin/playlists/0bHrARQz4dzb2JFy7FUNzg/tracks";
-      Meteor.http.post(url,
-        {data:
-          {code:code,
-            redirect_uri:redirectURI,
-            grant_type:'authorization_code',
-            client_id:'51b9e5920e2a4d2ebfca4b9350cd57de',
-            client_secret:'a1b8cfd6a340401f8b1a9bdaacca1ca5',
-            spotify_id:spotifyid
-          },
-            headers:{'Content-Type':'application/json'}
+      var spotifyId;
+      Meteor.http.put(url,
+        {params:
+          {authorization: 'Bearer BQDLH2CeDD-ikGA5Zv4Qu_YdQ3gD1c__7KnbpTg3aHNf_2LzDf9Deu0_gHasVPyn35_BKr6v-j2i4Yz0-oBBjTO7mlzSJlcVQXUsmaSrIjAE5BGdZdcjdu0-ffQolKCrB1FjASbQE5H-jffCU4FjcL9Kvi45RSEHy4rLOvUvw9VlAOpNCCYAzRzH08a5QXg7Xn_oz3Z_QeEx0OQ33QQTLS_5',
+          accept: 'application/json',
+          contentType: 'application/json'}
+          // data:
+          // {uris:
+          //   ["spotify:track:4401BmUJkaeWdxetMg0Cx2","spotify:track:5ejwTEOCsaDEjvhZTcU6lg"]
+          // }
           });
-},
+        },
     //change pending status
     approveSong: function(currentPlaylist, songId){
       Playlists.update(
@@ -260,7 +260,7 @@ if (Meteor.isServer) {
         {$set: {"songs.$.pending" : false}}
 
       
-      )
+      );
     },
     
     //ban a song
