@@ -161,6 +161,15 @@ if (Meteor.isClient) {
     console.log('songs: ' + songs.songs);
     return songs.songs;
   };
+  
+  Template.playlistRoute.events({
+    'click .ban-this': function (event){
+      console.log('ya banned',this);
+      var currentPlaylist = Session.get('selected_playlist');
+      Meteor.call('banSong', currentPlaylist, this.id);
+    }
+  });
+  
   // your songs
    Template.songsRoute.playlistTracks = function () {
     var playlist = Session.get('selected_playlist');
