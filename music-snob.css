@@ -60,3 +60,10 @@ h3 {
 	margin-top: 15px;
 	margin-left: -5px;
 }
+.buttonImg{
+	height:40px;
+	width: 40px;
+}
+.playButton{
+  background-color: white;
+}

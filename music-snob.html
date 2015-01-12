@@ -135,7 +135,7 @@
                 <div class='large-4 columns'>{{album}}</div>
               </div>
               <div class="large-3 columns" style='padding: 2px'>
-                <button type='submit' class='playButton'>Play</button>
+                {{>playButtonConfig}}
               </div>
               <div class='large-1 columns'><a href='#' class='ban-this'>Ban!</a></div>
             </div> 
@@ -151,7 +151,7 @@
 </template>
 <!-- player -->
 <template name='spotifyPlayer'>
-  <iframe src="https://embed.spotify.com/?uri=spotify:track:{{id}}" width="200" height="80" frameborder="0" allowtransparency="true" class="player-refresh"></iframe>
+  <iframe src="https://embed.spotify.com/?uri=spotify:track:7ixxyJJJKZdo8bsdWwkaB6" width="200" height="80" frameborder="0" allowtransparency="true" class="player-refresh"></iframe>
 </template>
 <!-- Your songs template -->
 <template name='songsRoute'>
@@ -184,7 +184,9 @@
               <div class='large-5 columns'>{{name}}</div>
               <div class='large-4 columns'>{{album}}</div>
             </div>
-          <div class="large-4 columns" style='padding: 2px'>{{>spotifyPlayer}}</div>
+          <div class="large-4 columns" style='padding: 2px'>
+            {{>playButtonConfig}}
+          </div>
           </div> 
         {{/if}}
       {{/each}}
@@ -223,7 +225,9 @@
           <div class='large-5 columns'>{{name}}</div>
           <div class='large-4 columns'>{{album}}</div>
         </div>
-          <div class="large-3 columns" style='padding: 2px'>{{>spotifyPlayer}}</div>
+          <div class="large-3 columns" style='padding: 2px'>
+            {{>playButtonConfig}}
+          </div>
           <div class='large-1 columns'>
             {{#if isAdmin}}
               <a href='#' class='add-this'>Add!</a><a href='#' class='ban-this'>Ban!</a>
@@ -266,7 +270,7 @@
           <div class='large-5 columns'>{{name}}</div>
           <div class='large-4 columns'>{{album}}</div>
         </div>
-          <div class="large-3 columns" style='padding: 2px'>{{>spotifyPlayer}}</div>
+          <div class="large-3 columns" style='padding: 2px'>{{>playButtonConfig}}</div>
           <div class='large-1 columns'><a href='#' class='ban-this'>UnBan</a></div>
         </div> 
       {{/if}}
@@ -277,3 +281,6 @@
 <template name='pushToSpotify'>
   <button type='submit' class='pushIt'>Push</button>
   </template>
+<template name='playButtonConfig'>
+    <button type='submit' class='playButton'><img src='/images/play.jpg' class='buttonImg'></button>
+</template>

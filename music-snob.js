@@ -81,8 +81,32 @@ if (Meteor.isClient) {
   Template.playlistRoute.events({
     'click .playButton': function (event){
       console.log(this.id);
-      var songId = "https://embed.spotify.com/?uri=spotify:track:" + this.id
-      $('.player-refresh').attr("src", songId)
+      var songId = "https://embed.spotify.com/?uri=spotify:track:" + this.id;
+      $('.player-refresh').attr("src", songId);
+      return false;
+    }
+  }),
+  Template.songsRoute.events({
+    'click .playButton': function (event){
+      console.log(this.id);
+      var songId = "https://embed.spotify.com/?uri=spotify:track:" + this.id;
+      $('.player-refresh').attr("src", songId);
+      return false;
+    }
+  }),
+  Template.bannedRoute.events({
+    'click .playButton': function (event){
+      console.log(this.id);
+      var songId = "https://embed.spotify.com/?uri=spotify:track:" + this.id;
+      $('.player-refresh').attr("src", songId);
+      return false;
+    }
+  }),
+  Template.pendingRoute.events({
+    'click .playButton': function (event){
+      console.log(this.id);
+      var songId = "https://embed.spotify.com/?uri=spotify:track:" + this.id;
+      $('.player-refresh').attr("src", songId);
       return false;
     }
   }),
@@ -302,15 +326,15 @@ if (Meteor.isServer) {
         {$set: {
           "songs.$.banned" : true,
           "songs.$.pending" : false}}
-      )
+      );
 
     },
     //Converts playlist to a list of URIs
     playlistToUri: function(playlist) {
-      var playlistUris = []
+      var playlistUris = [];
       playlist.songs.forEach(function(song) {
         playlistUris.push("spotify:track:"+song.id);
-      })
+      });
       return playlistUris
     }
     // inPlaylist: function(spotifySongId, playlist){
