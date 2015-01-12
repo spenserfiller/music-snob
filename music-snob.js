@@ -157,11 +157,11 @@ if (Meteor.isClient) {
       var playlistTracks = Playlists.findOne({name: currentPlaylist})
       var uriPlaylist = Meteor.call('playlistToUri', playlistTracks, function(error, result){
         if(error) {
-          window.alert("Error: " + err.reason);
-          console.log("error occured on receiving data on server. ", err );
+          window.alert("Error: " + error.reason);
+          console.log("error occured on receiving data on server. ", error );
         } else {
           console.log("result: ", { "uris": result});
-          Meteor.call('addToSpotify', { "uris": result});
+          Meteor.call('addToSpotify', result);
         }
       })
       return false
@@ -247,20 +247,18 @@ if (Meteor.isServer) {
          } } }
       );
     },
-    addToSpotify: function(spotifyid){
+    addToSpotify: function(trackUris){
       var url = "https://api.spotify.com/v1/users/mksadmin/playlists/0bHrARQz4dzb2JFy7FUNzg/tracks";
       Meteor.http.post(url,
-        {data:
-          {code:code,
-            redirect_uri:redirectURI,
-            grant_type:'authorization_code',
-            client_id:'51b9e5920e2a4d2ebfca4b9350cd57de',
-            client_secret:'a1b8cfd6a340401f8b1a9bdaacca1ca5',
-            spotify_id: spotifyid
-          },
-            headers:{'Content-Type':'application/json'}
+        {params:
+          {
+            "authorization": "Bearer BQDLH2CeDD-ikGA5Zv4Qu_YdQ3gD1c__7KnbpTg3aHNf_2LzDf9Deu0_gHasVPyn35_BKr6v-j2i4Yz0-oBBjTO7mlzSJlcVQXUsmaSrIjAE5BGdZdcjdu0-ffQolKCrB1FjASbQE5H-jffCU4FjcL9Kvi45RSEHy4rLOvUvw9VlAOpNCCYAzRzH08a5QXg7Xn_oz3Z_QeEx0OQ33QQTLS_5",
+            "accept": "application/json",
+            "Content-Type": "application/json",
+            "uris": trackUris
+          }
           });
-},
+        },
     //change pending status
     approveSong: function(currentPlaylist, songId){
       Playlists.update(
@@ -268,7 +266,7 @@ if (Meteor.isServer) {
         {$set: {"songs.$.pending" : false}}
 
       
-      )
+      );
     },
     
     //ban a song
