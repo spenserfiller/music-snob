@@ -193,6 +193,16 @@ if (Meteor.isClient) {
     console.log('songs: ' + songs.songs);
     return songs.songs;
   };
+  
+  //unban ahh track
+  Template.bannedRoute.events({
+    'click .ban-this': function (event){
+      console.log('unbanned',this);
+      var currentPlaylist = Session.get('selected_playlist');
+      Meteor.call('unbanSong', currentPlaylist, this.id);
+    }
+  });
+  
   Template.pushToSpotify.events({
     "click .pushIt": function (event){
       var currentPlaylist = Session.get('selected_playlist')
@@ -336,6 +346,13 @@ if (Meteor.isServer) {
         playlistUris.push("spotify:track:"+song.id);
       });
       return playlistUris
+    },
+    
+    unbanSong: function(currentPlaylist, songId){
+      Playlists.update(
+        {name: currentPlaylist, 'songs.id': songId},
+        {$set: {'songs.$.banned': false}}
+      );
     }
     // inPlaylist: function(spotifySongId, playlist){
     //   Playlists.findOne(
