@@ -285,8 +285,20 @@ if (Meteor.isServer) {
          } } }
       );
     },
+    // getAuthCode: function(){
+    //   var url = 'https://accounts.spotify.com/authorize';
+    //   Meteor.http.get(url,
+    //   {headers:
+    //     {
+    //     'client_id':'51b9e5920e2a4d2ebfca4b9350cd57de',
+    //     'response_type':'code',
+    //     'redirect_uri':'http://'//needs to be main page.
+    //     }
+    //   });
+    // },
     addToSpotify: function(trackUris){
       var url = "https://api.spotify.com/v1/users/mksadmin/playlists/0bHrARQz4dzb2JFy7FUNzg/tracks";
+      var auth = localStorage.getItem('');
       Meteor.http.put(url,
         {data:
           {
@@ -296,7 +308,7 @@ if (Meteor.isServer) {
           {
             "accept": "application/json",
             "Content-Type": "application/json",
-            "Authorization": "Bearer BQAC4CNcEN7pBSb_yvbEdwAWk3_VvA1lqQ098kSdgARN6I4uu_IMcfXKx1tYz-kz5UPSeFh4ghqDWjpZI6yLZMGIG3TMN8x9aRXteZVEYyoJQ803VLb5sxCJcem5ScmVA3u8Mg4oDY6Vxeb6fvNxSiiUUZhVH8P3YtPbk6XqRytK2eCWJOx1nux9dDloakfcL03cn85vhE3X43Jy-HtEPBEj"
+            "Authorization": 'Bearer ' + auth
           }
           });
         },
@@ -326,7 +338,7 @@ if (Meteor.isServer) {
       playlist.songs.forEach(function(song) {
         playlistUris.push("spotify:track:"+song.id);
       });
-      return playlistUris
+      return playlistUris;
     }
     // inPlaylist: function(spotifySongId, playlist){
     //   Playlists.findOne(
