@@ -357,7 +357,7 @@ if (Meteor.isServer) {
       playlist.songs.forEach(function(song) {
         playlistUris.push("spotify:track:"+song.id);
       });
-      return playlistUris
+      return playlistUris;
     },
     
     unbanSong: function(currentPlaylist, songId){
