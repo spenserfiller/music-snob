@@ -68,7 +68,7 @@ if (Meteor.isClient) {
   Template.pendingRoute.events({
     'click .add-this': function (event){
       var currentPlaylist = Session.get('selected_playlist');
-      console.log(this.id)
+      console.log(this.id);
       Meteor.call('approveSong', currentPlaylist, this.id);
     },
     'click .ban-this': function (event){
@@ -76,14 +76,15 @@ if (Meteor.isClient) {
       var currentPlaylist = Session.get('selected_playlist');
       Meteor.call('banSong', currentPlaylist, this.id);
     }
-  })
+  }),
   //pass ID to player
-  Template.spotifyPlayer.events({
+  Template.playlistRoute.events({
     'click .playButton': function (event){
+      console.log(this.id);
       var songId = this.id;
       return songId;
     }
-  })
+  }),
 
 //search bar
   Template.search.events({
@@ -192,6 +193,11 @@ if (Meteor.isClient) {
   Router.map( function () {
     this.route('bannedRoute', {
       path: 'banned'
+    });
+  });
+  Router.map( function () {
+    this.route('spotifyPlayer', {
+      path: ''
     });
   });
 }

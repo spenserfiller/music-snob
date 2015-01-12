@@ -110,7 +110,7 @@
          {{> playlistSelect}}
         </article>
       <div class="small-3 columns playerWindow">
-        <iframe src="https://embed.spotify.com/?uri=spotify:track:{{songId}}" width="200" height="380" frameborder="0" allowtransparency="true"></iframe>
+        {{>spotifyPlayer songId}}
       </div>
       <hr/>    
     </div>
@@ -133,14 +133,15 @@
               <div class='large-5 columns'>{{name}}</div>
               <div class='large-4 columns'>{{album}}</div>
             </div>
-            <div class="large-3 columns" style='padding: 2px'><iframe src="https://embed.spotify.com/?uri=spotify:track:{{id}}" width="200" height="80" frameborder="0" allowtransparency="true"></iframe></div>
+            <div class="large-3 columns" style='padding: 2px'>
+              <button type='submit' class='playButton'>Play</button>
+            </div>
             <div class='large-1 columns'><a href='#' class='ban-this'>Ban!</a></div>
           </div> 
         {{/unless}}
       {{/each}}    
     </div>
   </div>
-  {{>spotifyPlayer}}
 </template>
 <!-- MKS auth login -->
 <template name="MyPage">
@@ -148,7 +149,7 @@
 </template>
 <!-- player -->
 <template name='spotifyPlayer'>
-  <iframe src="https://embed.spotify.com/?uri=spotify:track:{{id}}" width="200" height="80" frameborder="0" allowtransparency="true"></iframe>
+  <a href='/player'><iframe src="https://embed.spotify.com/?uri=spotify:track:{{songId}}" width="200" height="80" frameborder="0" allowtransparency="true"></iframe></a>
 </template>
 <!-- Your songs template -->
 <template name='songsRoute'>
@@ -274,6 +275,3 @@
 <template name='pushToSpotify'>
   <button type='submit' class='pushIt'>Push</button>
   </template>
-<template name='spotifyPlayer'>
-  {{songId}}
-</template>
