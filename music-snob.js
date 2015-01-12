@@ -103,9 +103,8 @@ if (Meteor.isClient) {
 			Router.go('home');
       return false;
     },
-    "submit button.pushIt": function (event){
-      
-    }
+    // "submit button.pushIt": function (event){
+    // }
   });
   //play button function
 
@@ -162,12 +161,21 @@ if (Meteor.isClient) {
   };
   Template.pushToSpotify.events({
     "click .pushIt": function (event){
-      var playlist = Session.get('selected_playlist');
-      var songs = Playlists.findOne({name: playlist});
-      Meteor.call('addToSpotify', songs.songs.id);
+      var currentPlaylist = Session.get('selected_playlist')
+      var playlistTracks = Playlists.findOne({name: currentPlaylist})
+      var uriPlaylist = Meteor.call('playlistToUri', playlistTracks, function(error, result){
+        if(error) {
+          window.alert("Error: " + error.reason);
+          console.log("error occured on receiving data on server. ", error );
+        } else {
+          console.log("result: ", { "uris": result});
+          Meteor.call('addToSpotify', result);
+        }
+      })
+      return false
+      
     }
   });
-
 
 //router maps
   Router.map( function (){
@@ -252,18 +260,16 @@ if (Meteor.isServer) {
          } } }
       );
     },
-    addToSpotify: function(){
+    addToSpotify: function(trackUris){
       var url = "https://api.spotify.com/v1/users/mksadmin/playlists/0bHrARQz4dzb2JFy7FUNzg/tracks";
-      var spotifyId;
-      Meteor.http.put(url,
+      Meteor.http.post(url,
         {params:
-          {authorization: 'Bearer BQDLH2CeDD-ikGA5Zv4Qu_YdQ3gD1c__7KnbpTg3aHNf_2LzDf9Deu0_gHasVPyn35_BKr6v-j2i4Yz0-oBBjTO7mlzSJlcVQXUsmaSrIjAE5BGdZdcjdu0-ffQolKCrB1FjASbQE5H-jffCU4FjcL9Kvi45RSEHy4rLOvUvw9VlAOpNCCYAzRzH08a5QXg7Xn_oz3Z_QeEx0OQ33QQTLS_5',
-          accept: 'application/json',
-          contentType: 'application/json'}
-          // data:
-          // {uris:
-          //   ["spotify:track:4401BmUJkaeWdxetMg0Cx2","spotify:track:5ejwTEOCsaDEjvhZTcU6lg"]
-          // }
+          {
+            "authorization": "Bearer BQDLH2CeDD-ikGA5Zv4Qu_YdQ3gD1c__7KnbpTg3aHNf_2LzDf9Deu0_gHasVPyn35_BKr6v-j2i4Yz0-oBBjTO7mlzSJlcVQXUsmaSrIjAE5BGdZdcjdu0-ffQolKCrB1FjASbQE5H-jffCU4FjcL9Kvi45RSEHy4rLOvUvw9VlAOpNCCYAzRzH08a5QXg7Xn_oz3Z_QeEx0OQ33QQTLS_5",
+            "accept": "application/json",
+            "Content-Type": "application/json",
+            "uris": trackUris
+          }
           });
         },
     //change pending status
@@ -285,6 +291,14 @@ if (Meteor.isServer) {
           "songs.$.pending" : false}}
       )
 
+    },
+    //Converts playlist to a list of URIs
+    playlistToUri: function(playlist) {
+      var playlistUris = []
+      playlist.songs.forEach(function(song) {
+        playlistUris.push("spotify:track:"+song.id);
+      })
+      return playlistUris
     }
     // inPlaylist: function(spotifySongId, playlist){
     //   Playlists.findOne(
