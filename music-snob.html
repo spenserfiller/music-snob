@@ -109,6 +109,9 @@
         <article>
          {{> playlistSelect}}
         </article>
+      <div class="small-3 columns playerWindow">
+        <iframe src="https://embed.spotify.com/?uri=spotify:track:{{songId}}" width="200" height="380" frameborder="0" allowtransparency="true"></iframe>
+      </div>
       <hr/>    
     </div>
     <div class="large-9 columns">
@@ -137,6 +140,7 @@
       {{/each}}    
     </div>
   </div>
+  {{>spotifyPlayer}}
 </template>
 <!-- MKS auth login -->
 <template name="MyPage">
@@ -152,6 +156,9 @@
     <div class="small-3 columns" role="content">
         <article>
          {{> playlistSelect}}
+        </article>
+        <article>
+          {{>spotifyPlayer}}
         </article>
       <hr/>    
     </div>
@@ -189,6 +196,9 @@
       <article>
       {{> playlistSelect}}
       </article>
+      <article>
+          {{>spotifyPlayer}}
+        </article>
     <hr/>    
   </div>
   <div class="large-9 columns">
@@ -229,6 +239,9 @@
         <article>
         {{> playlistSelect}}
         </article>
+        <article>
+          {{>spotifyPlayer}}
+        </article>
       <hr/>    
     </div>
   <div class="large-9 columns">
@@ -261,3 +274,6 @@
 <template name='pushToSpotify'>
   <button type='submit' class='pushIt'>Push</button>
   </template>
+<template name='spotifyPlayer'>
+  {{songId}}
+</template>

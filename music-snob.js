@@ -77,6 +77,13 @@ if (Meteor.isClient) {
       Meteor.call('banSong', currentPlaylist, this.id);
     }
   })
+  //pass ID to player
+  Template.spotifyPlayer.events({
+    'click .playButton': function (event){
+      var songId = this.id;
+      return songId;
+    }
+  })
 
 //search bar
   Template.search.events({
