@@ -2,6 +2,7 @@ Playlists = new Mongo.Collection('playlists');
 
 // client side logic
 if (Meteor.isClient) {
+  
   Template.playlistSelect.helpers({
     playlists: function () {
       console.log(Playlists.find({}));
@@ -258,6 +259,9 @@ if (Meteor.isClient) {
 
 // server functions
 if (Meteor.isServer) {
+  Meteor.publish("playlists", function () {
+    return Playlists.find();
+  });
   Accounts.onCreateUser(function(options, user) {
       // Here is the data this package gives you
       var mks = user.services.makerpass;
@@ -272,6 +276,7 @@ if (Meteor.isServer) {
       user.profile.avatarUrl  = mks.avatarUrl;
       return user;
   });
+  
 	Meteor.methods({
 		searchTrack: function(track) {
 			var url = "https://api.spotify.com/v1/search?q=" + track + "&type=track&limit=10";
@@ -365,6 +370,12 @@ if (Meteor.isServer) {
         {name: currentPlaylist, 'songs.id': songId},
         {$set: {'songs.$.banned': false}}
       );
+    },
+    createPlaylist: function (){
+      if(Playslists.find({name: 'MKS Demo Playlist'})){
+        return true;
+      }
+      Playlists.insert({name: "MKS Demo Playlist"})
     }
     // inPlaylist: function(spotifySongId, playlist){
     //   Playlists.findOne(
