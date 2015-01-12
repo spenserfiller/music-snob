@@ -95,9 +95,8 @@ if (Meteor.isClient) {
 			Router.go('home');
       return false;
     },
-    "submit button.pushIt": function (event){
-      
-    }
+    // "submit button.pushIt": function (event){
+    // }
   });
   //play button function
 
@@ -154,12 +153,21 @@ if (Meteor.isClient) {
   };
   Template.pushToSpotify.events({
     "click .pushIt": function (event){
-      var playlist = Session.get('selected_playlist');
-      var songs = Playlists.findOne({name: playlist});
-      Meteor.call('addToSpotify', songs.songs.id);
+      var currentPlaylist = Session.get('selected_playlist')
+      var playlistTracks = Playlists.findOne({name: currentPlaylist})
+      var uriPlaylist = Meteor.call('playlistToUri', playlistTracks, function(error, result){
+        if(error) {
+          window.alert("Error: " + err.reason);
+          console.log("error occured on receiving data on server. ", err );
+        } else {
+          console.log("result: ", { "uris": result});
+          Meteor.call('addToSpotify', { "uris": result});
+        }
+      })
+      return false
+      
     }
   });
-
 
 //router maps
   Router.map( function (){
@@ -248,7 +256,7 @@ if (Meteor.isServer) {
             grant_type:'authorization_code',
             client_id:'51b9e5920e2a4d2ebfca4b9350cd57de',
             client_secret:'a1b8cfd6a340401f8b1a9bdaacca1ca5',
-            spotify_id:spotifyid
+            spotify_id: spotifyid
           },
             headers:{'Content-Type':'application/json'}
           });
@@ -272,6 +280,14 @@ if (Meteor.isServer) {
           "songs.$.pending" : false}}
       )
 
+    },
+    //Converts playlist to a list of URIs
+    playlistToUri: function(playlist) {
+      var playlistUris = []
+      playlist.songs.forEach(function(song) {
+        playlistUris.push("spotify:track:"+song.id);
+      })
+      return playlistUris
     }
     // inPlaylist: function(spotifySongId, playlist){
     //   Playlists.findOne(
